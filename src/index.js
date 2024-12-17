@@ -1,7 +1,15 @@
 import express from "express";
 import cors from "cors";
-import authRouter from "./routes/auth-route";
-import userRouter from "./routes/user-route";
+import authRouter from "./routes/auth-routes";
+import userRouter from "./routes/user-routes";
+import productRouter from "./routes/product-routes";
+import adminProductRouter from "./routes/adminProduct-routes";
+import cartRouter from "./routes/cart-routes";
+import cartItemRouter from "./routes/cartItem-routes";
+import orderRouter from "./routes/order-routes";
+import adminOrderRouter from "./routes/adminOrder-routes";
+import ratingRouter from "./routes/rating-routes";
+import reviewRouter from "./routes/review-routes";
 
 const app = express();
 
@@ -14,5 +22,13 @@ app.get("/", (req, res) =>
 
 app.use("/auth", authRouter);
 app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
+app.use("/api/admin/products", adminProductRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/cart_items", cartItemRouter);
+app.use("/api/orders", orderRouter);
+app.use("/api/admin/orders", adminOrderRouter);
+app.use("/api/ratings", ratingRouter);
+app.use("/api/reviews", reviewRouter);
 
 export default app;
