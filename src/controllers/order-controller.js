@@ -5,18 +5,18 @@ import {
 } from "../services/order-service";
 
 export const createOrderForUser = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
   try {
     let createdOrder = await createOrder(user, req.body);
 
-    return res.send(201).send(createdOrder);
+    return res.status(201).send(createdOrder);
   } catch (e) {
     return res.status(500).send({ error: e.message });
   }
 };
 
 export const findOrderByIdForUser = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
   try {
     let order = await findOrderById(req.params.id);
 
@@ -27,7 +27,7 @@ export const findOrderByIdForUser = async (req, res) => {
 };
 
 export const orderHistoryForUser = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
   try {
     let orderHistory = await getUserOrderHistory(user._id);
 

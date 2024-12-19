@@ -41,6 +41,7 @@ export const updateProductForUser = async (req, res) => {
 
 export const findProductByIdForUser = async (req, res) => {
   const productId = req.params.productId;
+
   try {
     const product = await findProductById(productId);
 

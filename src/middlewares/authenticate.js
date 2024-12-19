@@ -6,7 +6,7 @@ export const authenticate = async (req, res, next) => {
     const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
-      return req.status(404).send({ error: "Token Not Found" });
+      return res.status(404).send({ error: "Token Not Found" });
     }
 
     const userId = getUserIdFromToken(token);

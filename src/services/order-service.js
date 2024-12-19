@@ -1,5 +1,6 @@
 import Address from "../models/Address";
 import Order from "../models/Order";
+import OrderItem from "../models/OrderItem";
 import { findUserCart } from "./cart-service";
 
 export const createOrder = async (user, shipAddress) => {
@@ -23,10 +24,10 @@ export const createOrder = async (user, shipAddress) => {
     const cart = await findUserCart(user._id);
     const orderItems = [];
 
-    for (item of cart.cartItems) {
-      const orderItem = new orderItems({
+    for (let item of cart.cartItems) {
+      const orderItem = new OrderItem({
         price: item.price,
-        product: item.price,
+        product: item.product,
         quantity: item.quantity,
         size: item.size,
         userId: item.userId,

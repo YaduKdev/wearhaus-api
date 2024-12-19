@@ -1,7 +1,7 @@
 import { addCartItem, findUserCart } from "../services/cart-service";
 
 export const findUsersCart = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
 
   try {
     const cart = await findUserCart(user._id);
@@ -13,7 +13,7 @@ export const findUsersCart = async (req, res) => {
 };
 
 export const addItemToCart = async (req, res) => {
-  const user = req.user;
+  const user = await req.user;
 
   try {
     const cartItem = await addCartItem(user._id, req.body);

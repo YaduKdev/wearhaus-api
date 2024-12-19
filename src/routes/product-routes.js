@@ -8,6 +8,6 @@ import {
 const productRouter = express.Router();
 
 productRouter.get("/", authenticate, getAllProductsForUser);
-productRouter.get("/:id/:id", authenticate, findProductByIdForUser);
+productRouter.get("/id/:productId", authenticate, findProductByIdForUser);
 
 export default productRouter;
