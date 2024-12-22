@@ -107,7 +107,7 @@ export const getAllProducts = async (reqQuery) => {
   }
 
   if (sizes) {
-    const sizesSet = new Set(sizes);
+    const sizesSet = new Set(sizes.split(","));
 
     query = query.where("sizes.name").in([...sizesSet]);
   }
@@ -121,9 +121,13 @@ export const getAllProducts = async (reqQuery) => {
   }
 
   if (sort) {
-    const sortDirection = sort === "price_high" ? -1 : 1;
+    if (sort === "popularity") {
+      query = query.sort({ $natural: 1 });
+    } else {
+      const sortDirection = sort === "price_high" ? -1 : 1;
 
-    query = query.sort({ discountedPrice: sortDirection });
+      query = query.sort({ discountedPrice: sortDirection });
+    }
   }
 
   if (stock) {
