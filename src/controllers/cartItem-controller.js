@@ -24,7 +24,6 @@ export const removeItemInCart = async (req, res) => {
 
     return res.status(200).send({ message: "Cart Item Removed Successfully." });
   } catch (e) {
-    console.log("ERROR", JSON.stringify(e));
     return res.status(500).send({ error: e.message });
   }
 };

@@ -45,7 +45,6 @@ export const addCartItem = async (userId, productData) => {
   try {
     const cart = await Cart.findOne({ user: userId });
     const product = await Product.findById(productData.productId);
-    console.log("cart===>", cart);
     const isPresent = await CartItem.findOne({
       cart: cart._id,
       product: product._id,
@@ -67,7 +66,7 @@ export const addCartItem = async (userId, productData) => {
       cart.cartItems.push(createdCartItem);
       await cart.save();
 
-      return "Item Added To Cart.";
+      return createdCartItem;
     }
   } catch (e) {
     throw new Error(e.message);

@@ -6,6 +6,7 @@ import {
 
 export const createOrderForUser = async (req, res) => {
   const user = await req.user;
+
   try {
     let createdOrder = await createOrder(user, req.body);
 

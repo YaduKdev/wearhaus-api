@@ -40,7 +40,7 @@ export const removeCartItem = async (userId, cartItemId) => {
 
 export const findCartItemById = async (cartItemId) => {
   const item = await CartItem.findById(cartItemId).populate("product");
-
+  console.log("REACHED HERE2", item, "CARTITEM ID", cartItemId);
   if (item) {
     return item;
   } else {
