@@ -7,7 +7,7 @@ import {
 
 const productRouter = express.Router();
 
-productRouter.get("/", authenticate, getAllProductsForUser);
-productRouter.get("/id/:productId", authenticate, findProductByIdForUser);
+productRouter.get("/", getAllProductsForUser);
+productRouter.get("/id/:productId", findProductByIdForUser);
 
 export default productRouter;
