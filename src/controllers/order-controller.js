@@ -21,7 +21,7 @@ export const findOrderByIdForUser = async (req, res) => {
   try {
     let order = await findOrderById(req.params.id);
 
-    return res.send(200).send(order);
+    return res.status(200).send(order);
   } catch (e) {
     return res.status(500).send({ error: e.message });
   }

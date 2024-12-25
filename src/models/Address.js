@@ -29,7 +29,7 @@ const addressSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
-  mobileNo: {
+  contactNo: {
     type: String,
     required: true,
   },
