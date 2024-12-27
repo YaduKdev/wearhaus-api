@@ -25,13 +25,12 @@ export const createUser = async (userData) => {
 export const findUserById = async (userId) => {
   try {
     const user = await User.findById(userId);
-    // .populate("address");
 
     if (!user) {
       throw new Error(`No User Found With ${userId} ID!`);
     }
 
-    return user;
+    return user.populate("addresses");
   } catch (e) {
     throw new Error(e.message);
   }
@@ -61,7 +60,7 @@ export const getUserProfileByToken = async (token) => {
       throw Error(`No User Found With ${userId} ID!`);
     }
 
-    return user;
+    return user.populate("addresses");
   } catch (e) {
     throw new Error(e.message);
   }

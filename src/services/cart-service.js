@@ -51,7 +51,11 @@ export const addCartItem = async (userId, productData) => {
       userId,
     });
 
-    if (!isPresent) {
+    if (isPresent && isPresent.size === productData.size) {
+      throw new Error("Item Already Added To Cart");
+    }
+
+    if (!isPresent || isPresent.size !== productData.size) {
       const cartItem = new CartItem({
         product: product._id,
         cart: cart._id,
@@ -66,7 +70,7 @@ export const addCartItem = async (userId, productData) => {
       cart.cartItems.push(createdCartItem);
       await cart.save();
 
-      return createdCartItem;
+      return createdCartItem.populate("product");
     }
   } catch (e) {
     throw new Error(e.message);
