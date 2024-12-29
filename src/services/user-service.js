@@ -6,6 +6,12 @@ export const createUser = async (userData) => {
   try {
     let { firstName, lastName, email, password } = userData;
 
+    let role;
+
+    if (userData.role) {
+      role = userData.role;
+    }
+
     const isUserExists = await User.findOne({ email });
 
     if (isUserExists) {
@@ -14,9 +20,21 @@ export const createUser = async (userData) => {
 
     password = await bcrypt.hash(password, 8);
 
-    const user = await User.create({ firstName, lastName, email, password });
+    if (role) {
+      const user = await User.create({
+        firstName,
+        lastName,
+        email,
+        password,
+        role,
+      });
 
-    return user;
+      return user;
+    } else {
+      const user = await User.create({ firstName, lastName, email, password });
+
+      return user;
+    }
   } catch (e) {
     throw new Error(e.message);
   }

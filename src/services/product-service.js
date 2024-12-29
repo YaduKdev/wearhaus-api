@@ -85,7 +85,7 @@ export const getAllProducts = async (reqQuery) => {
 
   let query = Product.find().populate("category");
 
-  if (category) {
+  if (category && category !== "undefined") {
     const existsCategory = await Category.findOne({ name: category });
 
     if (existsCategory) {
