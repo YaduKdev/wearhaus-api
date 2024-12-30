@@ -18,7 +18,8 @@ export const createProductForUser = async (req, res) => {
 };
 
 export const deleteProductForUser = async (req, res) => {
-  const productId = req.params.productId;
+  const productId = req.params.id;
+
   try {
     const product = await deleteProduct(productId);
 

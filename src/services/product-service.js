@@ -48,9 +48,14 @@ export const createProduct = async (productData) => {
 export const deleteProduct = async (productId) => {
   const product = await findProductById(productId);
 
+  console.log("PRODUCT FOUND", product);
+
   await Product.findByIdAndDelete(product._id);
 
-  return "Product Deleted Successfully";
+  return {
+    mesage: "Product Deleted Successfully",
+    deletedProductId: product._id,
+  };
 };
 
 export const updateProduct = async (productId, productData) => {
