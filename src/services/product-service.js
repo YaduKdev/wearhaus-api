@@ -48,8 +48,6 @@ export const createProduct = async (productData) => {
 export const deleteProduct = async (productId) => {
   const product = await findProductById(productId);
 
-  console.log("PRODUCT FOUND", product);
-
   await Product.findByIdAndDelete(product._id);
 
   return {
@@ -153,7 +151,12 @@ export const getAllProducts = async (reqQuery) => {
 
   const totalPages = Math.ceil(totalProducts / pageSize);
 
-  return { content: finalProducts, currentPage: pageNumber, totalPages };
+  return {
+    content: finalProducts,
+    currentPage: pageNumber,
+    totalProducts,
+    totalPages,
+  };
 };
 
 export const createMultipleProducts = async (products) => {
