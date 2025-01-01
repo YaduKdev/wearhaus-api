@@ -8,7 +8,7 @@ export const createOrderForUser = async (req, res) => {
   const user = await req.user;
 
   try {
-    let createdOrder = await createOrder(user, req.body);
+    const createdOrder = await createOrder(user, req.body);
 
     return res.status(201).send(createdOrder);
   } catch (e) {

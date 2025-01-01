@@ -12,7 +12,6 @@ export const createOrder = async (user, shipAddress) => {
       address = existingAddress;
     } else {
       address = new Address(shipAddress);
-      address.user = user;
 
       await address.save();
 
@@ -157,6 +156,8 @@ export const deleteOrder = async (orderId) => {
     const order = await findOrderById(orderId);
 
     await Order.findByIdAndDelete(order._id);
+
+    return order;
   } catch (e) {
     throw new Error(e.message);
   }
