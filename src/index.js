@@ -10,6 +10,7 @@ import orderRouter from "./routes/order-routes";
 import adminOrderRouter from "./routes/adminOrder-routes";
 import ratingRouter from "./routes/rating-routes";
 import reviewRouter from "./routes/review-routes";
+import paymentRouter from "./routes/payment-routes";
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use("/api/orders", orderRouter);
 app.use("/api/admin/orders", adminOrderRouter);
 app.use("/api/ratings", ratingRouter);
 app.use("/api/reviews", reviewRouter);
+app.use("/api/payments", paymentRouter);
 
 export default app;
