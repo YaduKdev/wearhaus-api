@@ -1,4 +1,5 @@
 import { razorpay } from "../config/razorpay";
+import { removeAllCartItems } from "./cartItem-service";
 import { findOrderById } from "./order-service";
 
 export const createPaymentLink = async (orderId) => {
@@ -37,7 +38,7 @@ export const createPaymentLink = async (orderId) => {
   }
 };
 
-export const updatePaymentInfo = async (reqData) => {
+export const updatePaymentInfo = async (userId, reqData) => {
   const paymentId = reqData.payment_id;
   const orderId = reqData.order_id;
 
@@ -47,8 +48,10 @@ export const updatePaymentInfo = async (reqData) => {
 
     if (payment.status == "captured") {
       order.paymentDetails.paymentId = paymentId;
-      order.paymentDetails.status = "COMPLETED";
+      order.paymentDetails.paymentStatus = "COMPLETED";
       order.orderStatus = "PLACED";
+
+      removeAllCartItems(userId);
 
       await order.save();
     }

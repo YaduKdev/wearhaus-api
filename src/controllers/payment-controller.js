@@ -14,8 +14,9 @@ export const createPaymentLinkForUser = async (req, res) => {
 };
 
 export const updatePaymentInformation = async (req, res) => {
+  const user = await req.user;
   try {
-    await updatePaymentInfo(req.query);
+    await updatePaymentInfo(user._id, req.query);
 
     return res
       .status(200)

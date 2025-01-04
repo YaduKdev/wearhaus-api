@@ -1,4 +1,5 @@
 import CartItem from "../models/CartItem";
+import { findUserCart } from "./cart-service";
 import { findUserById } from "./user-service";
 
 export const updateCartItem = async (userId, cartItemId, cartItemData) => {
@@ -21,7 +22,9 @@ export const updateCartItem = async (userId, cartItemId, cartItemData) => {
 
     const updatedCartItem = await item.save();
 
-    return updatedCartItem;
+    const updatedCart = await findUserCart(userId);
+
+    return { cartItem: updatedCartItem, cart: updatedCart };
   } else {
     throw new Error("Cart Item Cannot Be Updated.");
   }
@@ -35,6 +38,18 @@ export const removeCartItem = async (userId, cartItemId) => {
     return await CartItem.findByIdAndDelete(cartItemId);
   } else {
     throw new Error("Cannot Remove Another User's Item.");
+  }
+};
+
+export const removeAllCartItems = async (userId) => {
+  const user = await findUserById(userId);
+
+  if (user._id) {
+    await CartItem.deleteMany({ userId: userId });
+
+    return "All Cart Items Removed Successfully.";
+  } else {
+    throw new Error("Cannot Remove Cart Items.");
   }
 };
 
