@@ -10,9 +10,10 @@ export const register = async (req, res) => {
 
     await createCart(user);
 
-    return res
-      .status(200)
-      .send({ jwt, message: "You Have Signed Up Successfully." });
+    return res.status(200).send({
+      jwt,
+      message: "You Have Signed Up Successfully.",
+    });
   } catch (e) {
     return res.status(500).send({ error: e.message });
   }
@@ -42,9 +43,10 @@ export const login = async (req, res) => {
 
     const jwt = generateToken(user._id);
 
-    return res
-      .status(200)
-      .send({ jwt, message: "You Have Signed In Successfully." });
+    return res.status(200).send({
+      jwt,
+      message: "You Have Signed In Successfully.",
+    });
   } catch (e) {
     return res.status(500).send({ error: e.message });
   }

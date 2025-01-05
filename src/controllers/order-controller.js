@@ -32,7 +32,7 @@ export const orderHistoryForUser = async (req, res) => {
   try {
     let orderHistory = await getUserOrderHistory(user._id);
 
-    return res.send(200).send(orderHistory);
+    return res.status(200).send(orderHistory);
   } catch (e) {
     return res.status(500).send({ error: e.message });
   }
