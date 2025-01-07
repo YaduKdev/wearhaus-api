@@ -4,6 +4,7 @@ import {
   deleteProduct,
   findProductById,
   getAllProducts,
+  searchProducts,
   updateProduct,
 } from "../services/product-service";
 
@@ -59,6 +60,49 @@ export const getAllProductsForUser = async (req, res) => {
     return res.status(200).send(products);
   } catch (e) {
     return res.status(500).send({ error: e.message });
+  }
+};
+
+export const searchProductsForUser = async (req, res) => {
+  try {
+    const { q: searchQuery } = req.query;
+
+    const products = await searchProducts(searchQuery);
+
+    return res.status(200).json({
+      success: true,
+      data: products,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+};
+
+export const searchProductsWithFiltersForUser = async (req, res) => {
+  try {
+    const { search, category, minPrice, maxPrice } = req.query;
+
+    const filters = {
+      search,
+      category,
+      minPrice: minPrice ? Number(minPrice) : undefined,
+      maxPrice: maxPrice ? Number(maxPrice) : undefined,
+    };
+
+    const products = await productService.searchProductsWithFilters(filters);
+
+    return res.status(200).json({
+      success: true,
+      data: products,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: error.message,
+    });
   }
 };
 

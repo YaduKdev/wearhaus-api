@@ -12,6 +12,7 @@ export const register = async (req, res) => {
 
     return res.status(200).send({
       jwt,
+      role: user.role,
       message: "You Have Signed Up Successfully.",
     });
   } catch (e) {
@@ -45,6 +46,7 @@ export const login = async (req, res) => {
 
     return res.status(200).send({
       jwt,
+      role: user.role,
       message: "You Have Signed In Successfully.",
     });
   } catch (e) {

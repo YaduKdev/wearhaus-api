@@ -159,6 +159,69 @@ export const getAllProducts = async (reqQuery) => {
   };
 };
 
+export const searchProducts = async (searchQuery) => {
+  try {
+    const query = {};
+
+    if (searchQuery) {
+      const searchRegex = new RegExp(searchQuery, "i");
+
+      query.$or = [{ title: searchRegex }, { "category.name": searchRegex }];
+    }
+
+    const products = await Product.find(query)
+      .select("title imageUrl category _id")
+      .populate("category", "name")
+      .limit(10)
+      .lean();
+
+    return products.map((product) => ({
+      id: product._id,
+      name: product.title,
+      category: product.category.name,
+      imageUrl: product.imageUrl,
+    }));
+  } catch (error) {
+    throw new Error(`Error searching products: ${error.message}`);
+  }
+};
+
+export const searchProductsWithFilters = async (filters) => {
+  try {
+    const { search, category, minPrice, maxPrice } = filters;
+    const query = {};
+
+    if (search) {
+      query.title = new RegExp(search, "i");
+    }
+
+    if (category) {
+      query.category = category;
+    }
+
+    if (minPrice !== undefined || maxPrice !== undefined) {
+      query.price = {};
+      if (minPrice !== undefined) query.price.$gte = minPrice;
+      if (maxPrice !== undefined) query.price.$lte = maxPrice;
+    }
+
+    const products = await Product.find(query)
+      .select("title imageUrl category _id")
+      .populate("category", "name")
+      .limit(10)
+      .lean();
+
+    return products.map((product) => ({
+      id: product._id,
+      name: product.title,
+      category: product.category?.name || "Uncategorized",
+      imageUrl: product.imageUrl,
+    }));
+  } catch (error) {
+    throw new Error(`Error searching products with filters: ${error.message}`);
+  }
+};
+
 export const createMultipleProducts = async (products) => {
   for (let product of products) {
     await createProduct(product);
