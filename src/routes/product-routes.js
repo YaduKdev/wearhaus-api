@@ -3,6 +3,7 @@ import { authenticate } from "../middlewares/authenticate";
 import {
   findProductByIdForUser,
   getAllProductsForUser,
+  getHomeProductsForUser,
   searchProductsForUser,
   searchProductsWithFiltersForUser,
 } from "../controllers/product-controller";
@@ -10,6 +11,7 @@ import {
 const productRouter = express.Router();
 
 productRouter.get("/", getAllProductsForUser);
+productRouter.get("/home", getHomeProductsForUser);
 productRouter.get("/id/:productId", findProductByIdForUser);
 productRouter.get("/search", searchProductsForUser);
 productRouter.get("/search/filters", searchProductsWithFiltersForUser);

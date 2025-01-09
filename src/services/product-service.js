@@ -159,6 +159,26 @@ export const getAllProducts = async (reqQuery) => {
   };
 };
 
+export const getProductsForHome = async (category, limit) => {
+  try {
+    const existingCategory = await Category.findOne({ name: category.id });
+
+    const products = await Product.find({ category: existingCategory._id })
+      .limit(limit)
+      .select("title imageUrl price discountedPrice discountPercent _id");
+
+    const homeProduct = {
+      section: category,
+      content: products,
+    };
+
+    return homeProduct;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to get products by category");
+  }
+};
+
 export const searchProducts = async (searchQuery) => {
   try {
     const query = {};

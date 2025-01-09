@@ -4,6 +4,7 @@ import {
   deleteProduct,
   findProductById,
   getAllProducts,
+  getProductsForHome,
   searchProducts,
   updateProduct,
 } from "../services/product-service";
@@ -60,6 +61,30 @@ export const getAllProductsForUser = async (req, res) => {
     return res.status(200).send(products);
   } catch (e) {
     return res.status(500).send({ error: e.message });
+  }
+};
+
+export const getHomeProductsForUser = async (req, res) => {
+  const categories = [
+    { name: "Men's Sweaters", id: "men_sweaters" },
+    { name: "Dresses", id: "women_dresses" },
+    { name: "Men's Cargos", id: "men_cargos" },
+    { name: "Tops", id: "women_tops" },
+    { name: "Men's Oversized T-shirts", id: "men_oversized_tshirts" },
+    { name: "Women's Sweaters", id: "women_sweaters" },
+    { name: "Sneakers", id: "sneakers" },
+  ];
+  const limit = 9;
+
+  try {
+    const allProducts = [];
+    for (const category of categories) {
+      const products = await getProductsForHome(category, limit);
+      allProducts.push(products);
+    }
+    res.status(200).json(allProducts);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to get products" });
   }
 };
 
