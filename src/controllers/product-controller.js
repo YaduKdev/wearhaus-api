@@ -70,7 +70,7 @@ export const getHomeProductsForUser = async (req, res) => {
     { name: "Dresses", id: "women_dresses" },
     { name: "Men's Cargos", id: "men_cargos" },
     { name: "Tops", id: "women_tops" },
-    { name: "Men's Oversized T-shirts", id: "men_oversized_tshirts" },
+    { name: "Oversized T-shirts", id: "men_oversized_tshirts" },
     { name: "Women's Sweaters", id: "women_sweaters" },
     { name: "Sneakers", id: "sneakers" },
   ];
