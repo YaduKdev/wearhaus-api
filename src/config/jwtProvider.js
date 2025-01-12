@@ -1,15 +1,18 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
-const SECRET_KEY = "fikh34ikfnQekwhn5lknffdhflkdflkvslkdfjdhf";
+dotenv.config();
+
+const { JWT_SECRET } = process.env;
 
 export const generateToken = (userId) => {
-  const token = jwt.sign({ userId }, SECRET_KEY, { expiresIn: "48h" });
+  const token = jwt.sign({ userId }, JWT_SECRET, { expiresIn: "48h" });
 
   return token;
 };
 
 export const getUserIdFromToken = (token) => {
-  const decodedToken = jwt.verify(token, SECRET_KEY);
+  const decodedToken = jwt.verify(token, JWT_SECRET);
 
   return decodedToken.userId;
 };

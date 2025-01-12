@@ -1,7 +1,10 @@
 import app from ".";
+import dotenv from "dotenv";
 import { connectDb } from "./config/db";
 
-const PORT = 8200;
+dotenv.config();
+
+const { PORT } = process.env;
 
 app.listen(PORT, async () => {
   await connectDb();
