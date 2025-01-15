@@ -15,7 +15,16 @@ import paymentRouter from "./routes/payment-routes";
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+  origin: ["http://localhost:4200", "https://yourdomain.com"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  maxAge: 86400, // 24 hours
+};
+
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) =>
   res.status(200).send({ message: "Welcome to Wearhaus api", status: true })
