@@ -20,7 +20,7 @@ const corsOptions = {
   origin: [
     "http://localhost:4200",
     "https://wearhaus-view.onrender.com",
-    "https://wearhaus.vercel.app/",
+    "https://wearhaus.vercel.app",
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
