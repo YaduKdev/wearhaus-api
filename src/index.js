@@ -17,7 +17,11 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: ["http://localhost:4200", "https://wearhaus-view.onrender.com"],
+  origin: [
+    "http://localhost:4200",
+    "https://wearhaus-view.onrender.com",
+    "https://wearhaus.vercel.app/",
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
