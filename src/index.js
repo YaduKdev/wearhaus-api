@@ -11,17 +11,18 @@ import adminOrderRouter from "./routes/adminOrder-routes";
 import ratingRouter from "./routes/rating-routes";
 import reviewRouter from "./routes/review-routes";
 import paymentRouter from "./routes/payment-routes";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const { VIEW_URL } = process.env;
 
 const app = express();
 
 app.use(express.json());
 
 const corsOptions = {
-  origin: [
-    "http://localhost:4200",
-    "https://wearhaus-view.onrender.com",
-    "https://wearhaus.vercel.app",
-  ],
+  origin: [VIEW_URL],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
