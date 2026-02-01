@@ -11,15 +11,11 @@ const PORT = process.env.PORT || 8200;
 //   return console.log(`WEARHAUS app is running on port ${PORT}`);
 // });
 
-app.listen(PORT, () => {
-  console.log(`WEARHAUS is checking port ${PORT}`);
+app.listen(PORT, async () => {
+  try {
+    await connectDb();
+    console.log(`WEARHAUS app is running on port ${PORT}`);
+  } catch (err) {
+    console.error("Database connection failed:", err);
+  }
 });
-
-// app.listen(PORT, async () => {
-//   try {
-//     await connectDb();
-//     console.log(`WEARHAUS app is running on port ${PORT}`);
-//   } catch (err) {
-//     console.error("Database connection failed:", err);
-//   }
-// });
