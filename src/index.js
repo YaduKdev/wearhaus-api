@@ -1,16 +1,16 @@
 import express from "express";
 import cors from "cors";
-import authRouter from "./routes/auth-routes";
-import userRouter from "./routes/user-routes";
-import productRouter from "./routes/product-routes";
-import adminProductRouter from "./routes/adminProduct-routes";
-import cartRouter from "./routes/cart-routes";
-import cartItemRouter from "./routes/cartItem-routes";
-import orderRouter from "./routes/order-routes";
-import adminOrderRouter from "./routes/adminOrder-routes";
-import ratingRouter from "./routes/rating-routes";
-import reviewRouter from "./routes/review-routes";
-import paymentRouter from "./routes/payment-routes";
+import authRouter from "./routes/auth-routes.js";
+import userRouter from "./routes/user-routes.js";
+import productRouter from "./routes/product-routes.js";
+import adminProductRouter from "./routes/adminProduct-routes.js";
+import cartRouter from "./routes/cart-routes.js";
+import cartItemRouter from "./routes/cartItem-routes.js";
+import orderRouter from "./routes/order-routes.js";
+import adminOrderRouter from "./routes/adminOrder-routes.js";
+import ratingRouter from "./routes/rating-routes.js";
+import reviewRouter from "./routes/review-routes.js";
+import paymentRouter from "./routes/payment-routes.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -32,7 +32,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.get("/", (req, res) =>
-  res.status(200).send({ message: "Welcome to Wearhaus api", status: true })
+  res.status(200).send({ message: "Welcome to Wearhaus api", status: true }),
 );
 
 app.use("/auth", authRouter);
