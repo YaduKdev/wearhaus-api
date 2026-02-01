@@ -5,11 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --loader specifier-resolution-node/register server.js",
-    "start": "node --loader specifier-resolution-node/register server.js"
-  },
-  "engines": {
-    "node": "18.x"
+    "dev": "nodemon --import=specifier-resolution-node/register server.js",
+    "start": "node --import=specifier-resolution-node/register server.js"
   },
   "author": "Yadu",
   "license": "ISC",
