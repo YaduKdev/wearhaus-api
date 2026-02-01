@@ -1,12 +1,12 @@
 {
   "name": "wearhaus-api",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --import=specifier-resolution-node/register src/server.js",
-    "start": "node --import=specifier-resolution-node/register src/server.js"
+    "dev": "nodemon --import=specifier-resolution-node/register server.js",
+    "start": "node --import=specifier-resolution-node/register server.js"
   },
   "author": "Yadu",
   "license": "ISC",
