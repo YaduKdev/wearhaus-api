@@ -8,6 +8,9 @@
     "dev": "nodemon --loader specifier-resolution-node/register server.js",
     "start": "node --loader specifier-resolution-node/register server.js"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "author": "Yadu",
   "license": "ISC",
   "description": "",
