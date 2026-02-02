@@ -1,6 +1,6 @@
-import { razorpay } from "../config/razorpay";
-import { removeAllCartItems } from "./cartItem-service";
-import { findOrderById } from "./order-service";
+import { razorpay } from "../config/razorpay.js";
+import { removeAllCartItems } from "./cartItem-service.js";
+import { findOrderById } from "./order-service.js";
 import dotenv from "dotenv";
 
 dotenv.config();

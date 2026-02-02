@@ -1,6 +1,6 @@
-import { createUser, getUserByEmail } from "../services/user-service";
-import { createCart } from "../services/cart-service";
-import { generateToken } from "../config/jwtProvider";
+import { createUser, getUserByEmail } from "../services/user-service.js";
+import { createCart } from "../services/cart-service.js";
+import { generateToken } from "../config/jwtProvider.js";
 import bcrypt from "bcrypt";
 
 export const register = async (req, res) => {
@@ -38,7 +38,7 @@ export const login = async (req, res) => {
       return res
         .status(401)
         .send(
-          "The Given Password Is Invalid. Please Check Your Password And Try Again."
+          "The Given Password Is Invalid. Please Check Your Password And Try Again.",
         );
     }
 

@@ -1,6 +1,6 @@
-import Cart from "../models/Cart";
-import CartItem from "../models/CartItem";
-import Product from "../models/Product";
+import Cart from "../models/Cart.js";
+import CartItem from "../models/CartItem.js";
+import Product from "../models/Product.js";
 
 export const createCart = async (user) => {
   try {

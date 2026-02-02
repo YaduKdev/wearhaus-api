@@ -5,7 +5,7 @@ import {
   deliverOrder,
   getAllOrders,
   shipOrder,
-} from "../services/order-service";
+} from "../services/order-service.js";
 
 export const getAllOrdersForAdmin = async (req, res) => {
   try {

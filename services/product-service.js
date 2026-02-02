@@ -1,5 +1,5 @@
-import Category from "../models/Category";
-import Product from "../models/Product";
+import Category from "../models/Category.js";
+import Product from "../models/Product.js";
 
 export const createProduct = async (productData) => {
   let topLevel = await Category.findOne({
@@ -100,7 +100,7 @@ export const getAllProducts = async (reqQuery) => {
 
   if (color) {
     const colorSet = new Set(
-      color.split(",").map((color) => color.trim().toLowerCase())
+      color.split(",").map((color) => color.trim().toLowerCase()),
     );
 
     const colorRegex =

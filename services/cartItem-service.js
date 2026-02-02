@@ -1,6 +1,6 @@
-import CartItem from "../models/CartItem";
-import { findUserCart } from "./cart-service";
-import { findUserById } from "./user-service";
+import CartItem from "../models/CartItem.js";
+import { findUserCart } from "./cart-service.js";
+import { findUserById } from "./user-service.js";
 
 export const updateCartItem = async (userId, cartItemId, cartItemData) => {
   const item = await findCartItemById(cartItemId);

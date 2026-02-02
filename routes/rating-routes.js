@@ -1,9 +1,9 @@
 import express from "express";
-import { authenticate } from "../middlewares/authenticate";
+import { authenticate } from "../middlewares/authenticate.js";
 import {
   createRatingForUser,
   getAllRatingsForUser,
-} from "../controllers/rating-controller";
+} from "../controllers/rating-controller.js";
 
 const ratingRouter = express.Router();
 

@@ -7,7 +7,7 @@ import {
   getProductsForHome,
   searchProducts,
   updateProduct,
-} from "../services/product-service";
+} from "../services/product-service.js";
 
 export const createProductForUser = async (req, res) => {
   try {

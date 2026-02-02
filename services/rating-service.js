@@ -1,5 +1,5 @@
-import Rating from "../models/Rating";
-import { findProductById } from "./product-service";
+import Rating from "../models/Rating.js";
+import { findProductById } from "./product-service.js";
 
 export const createRating = async (ratingData, user) => {
   try {

@@ -1,4 +1,4 @@
-import { addCartItem, findUserCart } from "../services/cart-service";
+import { addCartItem, findUserCart } from "../services/cart-service.js";
 
 export const findUsersCart = async (req, res) => {
   const user = await req.user;

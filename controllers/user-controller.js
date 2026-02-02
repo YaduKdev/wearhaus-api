@@ -1,4 +1,7 @@
-import { findAllUsers, getUserProfileByToken } from "../services/user-service";
+import {
+  findAllUsers,
+  getUserProfileByToken,
+} from "../services/user-service.js";
 
 export const getUserProfile = async (req, res) => {
   try {

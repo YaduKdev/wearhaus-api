@@ -1,9 +1,9 @@
 import express from "express";
-import { authenticate } from "../middlewares/authenticate";
+import { authenticate } from "../middlewares/authenticate.js";
 import {
   createReviewForUser,
   getAllReviewsForUser,
-} from "../controllers/review-controller";
+} from "../controllers/review-controller.js";
 
 const reviewRouter = express.Router();
 

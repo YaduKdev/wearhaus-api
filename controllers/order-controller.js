@@ -2,7 +2,7 @@ import {
   createOrder,
   findOrderById,
   getUserOrderHistory,
-} from "../services/order-service";
+} from "../services/order-service.js";
 
 export const createOrderForUser = async (req, res) => {
   const user = await req.user;

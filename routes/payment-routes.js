@@ -1,9 +1,9 @@
 import express from "express";
-import { authenticate } from "../middlewares/authenticate";
+import { authenticate } from "../middlewares/authenticate.js";
 import {
   createPaymentLinkForUser,
   updatePaymentInformation,
-} from "../controllers/payment-controller";
+} from "../controllers/payment-controller.js";
 
 const paymentRouter = express.Router();
 

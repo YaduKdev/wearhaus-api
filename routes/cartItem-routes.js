@@ -1,9 +1,9 @@
 import express from "express";
-import { authenticate } from "../middlewares/authenticate";
+import { authenticate } from "../middlewares/authenticate.js";
 import {
   removeItemInCart,
   updateItemInCart,
-} from "../controllers/cartItem-controller";
+} from "../controllers/cartItem-controller.js";
 
 const cartItemRouter = express.Router();
 

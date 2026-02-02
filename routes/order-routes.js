@@ -1,10 +1,10 @@
 import express from "express";
-import { authenticate } from "../middlewares/authenticate";
+import { authenticate } from "../middlewares/authenticate.js";
 import {
   createOrderForUser,
   findOrderByIdForUser,
   orderHistoryForUser,
-} from "../controllers/order-controller";
+} from "../controllers/order-controller.js";
 
 const orderRouter = express.Router();
 

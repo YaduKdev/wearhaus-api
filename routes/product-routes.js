@@ -1,12 +1,12 @@
 import express from "express";
-import { authenticate } from "../middlewares/authenticate";
+import { authenticate } from "../middlewares/authenticate.js";
 import {
   findProductByIdForUser,
   getAllProductsForUser,
   getHomeProductsForUser,
   searchProductsForUser,
   searchProductsWithFiltersForUser,
-} from "../controllers/product-controller";
+} from "../controllers/product-controller.js";
 
 const productRouter = express.Router();
 

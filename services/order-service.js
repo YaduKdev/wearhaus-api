@@ -1,7 +1,7 @@
-import Address from "../models/Address";
-import Order from "../models/Order";
-import OrderItem from "../models/OrderItem";
-import { findUserCart } from "./cart-service";
+import Address from "../models/Address.js";
+import Order from "../models/Order.js";
+import OrderItem from "../models/OrderItem.js";
+import { findUserCart } from "./cart-service.js";
 
 export const createOrder = async (user, shipAddress) => {
   try {

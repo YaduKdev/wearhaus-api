@@ -1,7 +1,7 @@
 import {
   createPaymentLink,
   updatePaymentInfo,
-} from "../services/payment-service";
+} from "../services/payment-service.js";
 
 export const createPaymentLinkForUser = async (req, res) => {
   try {

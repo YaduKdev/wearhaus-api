@@ -1,5 +1,5 @@
-import { getUserIdFromToken } from "../config/jwtProvider";
-import { findUserById } from "../services/user-service";
+import { getUserIdFromToken } from "../config/jwtProvider.js";
+import { findUserById } from "../services/user-service.js";
 
 export const authenticate = async (req, res, next) => {
   try {
